@@ -4,13 +4,14 @@ const { notFound, errorHandler } = require("./middlewares/errors");
 
 const app = express();
 
-// Middlewares
+// App middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routers
 app.use(require("./routes"));
 
+// Error middlewares
 app.use(notFound);
 app.use(errorHandler);
 
