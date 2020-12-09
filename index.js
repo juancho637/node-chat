@@ -2,6 +2,9 @@ require("dotenv").config();
 
 const app = require("./src/main");
 
+// Connect to db
+require("./src/services/mongoDB").connect();
+
 // Node Server
 const server = require("http").createServer(app);
 
