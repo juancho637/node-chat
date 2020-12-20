@@ -10,6 +10,9 @@ const {
 const error = require("../../helpers/error");
 
 const createUserEmail = async (userEmailData) => {
+  const salt = await bcrypt.genSalt();
+  userEmailData.password = await bcrypt.hash(userEmailData.password, salt);
+
   const user = await userRepository.createUser(userEmailData);
   const accessToken = await generateJwt(userDto.single(user).id);
   const refreshToken = await generateRefreshJwt(userDto.single(user).id);

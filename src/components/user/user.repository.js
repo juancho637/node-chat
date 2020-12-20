@@ -4,9 +4,6 @@ const User = require("./user.model");
 
 const createUser = async (userData) => {
   try {
-    const salt = bcrypt.genSaltSync();
-    userData.password = bcrypt.hashSync(userData.password, salt);
-
     const user = new User(userData);
 
     return await user.save();
