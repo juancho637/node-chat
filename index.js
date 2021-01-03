@@ -1,7 +1,11 @@
-require("dotenv").config();
+if (process.env.APP_ENV !== "production") {
+  require("dotenv").config();
+}
 
+// Configutation
 const config = require("./src/config/app");
 
+// App file
 const app = require("./src/main");
 
 // Connect to db
